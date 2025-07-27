@@ -1,1 +1,2 @@
+//TODO: need support for remote git case
 extern mod ver,git,ver_adm { path="../" }
