@@ -1,0 +1,12 @@
+mod ver_test {
+    //flow mod_test |  ver.use | ver.patch | ver_test.ver_assert {
+    flow mod_test |    ver_test.ver_assert {
+        ENV_ROOT = "${ENV_TMP_ROOT}/" ;
+        gx.cmd (" cp ${ENV_DATA_ROOT}/version.txt ${ENV_TMP_ROOT}/");
+
+    }
+    flow ver_assert {
+        gx.read_cmd(     name : "CUR_VER" , cmd : "cat ${ENV_TMP_ROOT}/version.txt ");
+        gx.assert (  value : "${CUR_VER}" , expect  : "0.1.0" );
+    }
+}

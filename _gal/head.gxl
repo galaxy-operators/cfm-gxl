@@ -1,0 +1,3 @@
+
+extern mod ver, git { path = "./mods";  }
+extern mod ver  { path = "./tests";  }

@@ -1,0 +1,12 @@
+mod git {
+  flow tag_ver  {
+    gx.ver ( file : "${GXL_START_ROOT}/version.txt" ,  inc : "null"  );
+    gx.cmd (  "git tag ${VERSION}" );
+    gx.cmd (  "git push --tags" );
+  }
+  flow ci_ver {
+    gx.ver ( file : "${GXL_START_ROOT}/version.txt" ,  inc : "null" );
+    gx.echo (  "${VERSION}" );
+    gx.cmd (  "git commit -a -m 'update version to ${VERSION}' "  );
+  }
+}
