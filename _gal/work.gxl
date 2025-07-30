@@ -1,4 +1,5 @@
-extern mod head { path = "./_gal/"; }
+extern mod ver, git { path = "./mods";  }
+extern mod ver  { path = "./tests";  }
 
 mod envs  {
    env _common    {

@@ -1,9 +1,7 @@
-extern mod head   { path = "./_gal/"; }
 extern mod cfm { path = "./mods/"; }
 
 mod  envs {
   env default {
-    root = "./" ;
   }
 }
 mod main : ver_adm  {
