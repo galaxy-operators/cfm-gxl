@@ -1,12 +1,19 @@
 mod ver_adm {
   #[usage(desp="update version of patch ")]
-  flow v_patch   | ver.patch  { }
+  flow up_patch   | ver.patch  { }
   #[usage(desp="update version of patch  and commit ")]
-  flow v_patch_commit   | ver.patch   | git.ci_ver { }
+  flow up_patch_commit   | ver.patch   | git.ci_ver { }
   #[usage(desp="update version of feature ")]
-  flow v_feature |  ver.feature   { }
+  flow up_feature |  ver.feature   { }
   #[usage(desp="update version of feature and commit ")]
-  flow v_feature_commit  |  ver.feature  | git.ci_ver  { }
+  flow up_feature_commit  |  ver.feature  | git.ci_ver  { }
   #[usage(desp="add tag by version ")]
-  flow v_tag     | git.tag_ver ;
+  flow tag_stable    | git.tag_ver ;
+
+  flow tag_alpha {
+      tag.alpha() ;
+  }
+  flow tag_beta{
+      tag.beta() ;
+  }
 }

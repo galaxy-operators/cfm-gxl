@@ -1,9 +1,22 @@
 mod git {
-  flow tag_ver  {
+  flow tag_v  {
     gx.ver ( file : "${GXL_START_ROOT}/version.txt" ,  inc : "null"  );
     gx.cmd (  "git tag v${VERSION}" );
     gx.cmd (  "git push --tags" );
   }
+  flow tag_v_alpha {
+    gx.ver ( file : "${GXL_START_ROOT}/version.txt" ,  inc : "null"  );
+    # 检查并生成唯一的alpha版本号
+    ```cmd
+    local alpha_num=1
+    while git rev-parse "v${VERSION}-alpha.${alpha_num}" >/dev/null 2>&1; do
+        alpha_num=$((alpha_num+1))
+    done
+    ```
+    gx.cmd (  "git tag v${VERSION}-alpha.${alpha_num}" );
+    gx.cmd (  "git push --tags" );
+  }
+
   flow ci_ver {
     gx.ver ( file : "${GXL_START_ROOT}/version.txt" ,  inc : "null" );
     gx.echo (  "${VERSION}" );
