@@ -8,7 +8,7 @@ mod tag  {
       executer = "@PATH/tag_beta.sh" ;
   }
   activity rc {
-      executer = "@PATH/tag_beta.sh" ;
+      executer = "@PATH/tag_rc.sh" ;
   }
 
 }
