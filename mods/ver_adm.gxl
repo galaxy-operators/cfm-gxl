@@ -8,12 +8,19 @@ mod ver_adm {
   #[usage(desp="update version of feature and commit ")]
   flow up_feature_commit  |  ver.feature  | git.ci_ver  { }
   #[usage(desp="add tag by version ")]
-  flow tag_stable    | git.tag_ver ;
+  flow tag_stable{
+    gx.ver ( file : "${GXL_START_ROOT}/version.txt" ,  inc : "null"  );
+    gx.cmd (  "git tag v${VERSION}" );
+    gx.cmd (  "git push --tags" );
+  }
 
   flow tag_alpha {
       tag.alpha() ;
   }
   flow tag_beta{
       tag.beta() ;
+  }
+  flow tag_rc{
+      tag.rc() ;
   }
 }
