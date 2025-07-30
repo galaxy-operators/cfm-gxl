@@ -1,5 +1,5 @@
 extern mod head   { path = "./_gal/"; }
-extern mod ver,git,tag,ver_adm { path = "./mods/"; }
+extern mod cfm { path = "./mods/"; }
 
 mod  envs {
   env default {
