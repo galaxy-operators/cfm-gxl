@@ -17,13 +17,15 @@ mod ver_adm {
     gx.cmd (  "git push --tags" );
   }
 
-  flow tag_alpha {
-      tag.alpha() ;
-  }
   flow tag_beta{
-      tag.beta() ;
+    gx.ver ( file : "${GXL_START_ROOT}/version.txt" ,  inc : "null"  );
+    gx.cmd (  "git tag v${VERSION}-beta" );
+    gx.cmd (  "git push --tags" );
   }
-  flow tag_rc{
-      tag.rc() ;
+  flow tag_alpha{
+    gx.ver ( file : "${GXL_START_ROOT}/version.txt" ,  inc : "null"  );
+    gx.cmd (  "git tag v${VERSION}-alpha" );
+    gx.cmd (  "git push --tags" );
   }
+
 }
