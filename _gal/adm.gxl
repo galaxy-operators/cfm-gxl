@@ -4,5 +4,5 @@ mod  envs {
   env default {
   }
 }
-mod main : ver_adm  {
+mod main : lib_ver_adm  {
 }
