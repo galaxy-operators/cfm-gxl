@@ -2,7 +2,6 @@ mod ver {
 
   flow use   {
       gx.ver ( file : "${GXL_START_ROOT}/version.txt" ,  inc : "null" ); 
-      gx.echo (  "current version : ${VERSION}" );
     }
   flow build   {
       gx.ver ( file : "${GXL_START_ROOT}/version.txt" ,  inc : "build"  ); 
