@@ -1,0 +1,14 @@
+
+mod tag  {
+  activity alpha {
+      executer = "@PATH/tag_alpha.sh" ;
+  }
+
+  activity beta {
+      executer = "@PATH/tag_beta.sh" ;
+  }
+  activity rc {
+      executer = "@PATH/tag_rc.sh" ;
+  }
+
+}

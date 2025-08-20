@@ -1,12 +1,52 @@
-mod ver_adm {
+mod sys_ver_adm {
+  #[auto_load(entry)]
+  flow __into_sys_ver_adm | ver.use {
+  }
   #[usage(desp="update version of patch ")]
-  flow v_patch   | ver.patch  { }
+  flow up_patch   | ver.patch  { }
   #[usage(desp="update version of patch  and commit ")]
-  flow v_patch_commit   | ver.patch   | git.ci_ver { }
+  flow up_patch_ci | ver.patch   | git.ci_ver { }
   #[usage(desp="update version of feature ")]
-  flow v_feature |  ver.feature   { }
+  flow up_feature |  ver.feature   { }
   #[usage(desp="update version of feature and commit ")]
-  flow v_feature_commit  |  ver.feature  | git.ci_ver  { }
+  flow up_feature_ci |  ver.feature  | git.ci_ver  { }
   #[usage(desp="add tag by version ")]
-  flow v_tag     | git.tag_ver ;
+  flow tag_stable{
+    gx.ver ( file : "${GXL_START_ROOT}/version.txt" ,  inc : "null"  );
+    gx.cmd (  "git tag v${VERSION}" );
+    gx.cmd (  "git push --tags" );
+  }
+
+  flow tag_beta{
+    gx.ver ( file : "${GXL_START_ROOT}/version.txt" ,  inc : "null"  );
+    gx.cmd (  "git tag v${VERSION}-beta" );
+    gx.cmd (  "git push --tags" );
+  }
+  flow tag_alpha{
+    gx.ver ( file : "${GXL_START_ROOT}/version.txt" ,  inc : "null"  );
+    gx.cmd (  "git tag v${VERSION}-alpha" );
+    gx.cmd (  "git push --tags" );
+  }
+}
+mod lib_ver_adm {
+  #[auto_load(entry)]
+  flow __into_lib_ver_adm | ver.use {
+  }
+  #[usage(desp="update version of patch ")]
+  flow up_patch   | ver.patch  { }
+  #[usage(desp="update version of patch  and commit ")]
+  flow up_patch_ci | ver.patch   | git.ci_ver { }
+  #[usage(desp="update version of feature ")]
+  flow up_feature |  ver.feature   { }
+  #[usage(desp="update version of feature and commit ")]
+  flow up_feature_ci |  ver.feature  | git.ci_ver  { }
+  #[usage(desp="add tag by version ")]
+  flow tag_stable{
+    gx.ver ( file : "${GXL_START_ROOT}/version.txt" ,  inc : "null"  );
+    gx.cmd (  "git tag v${VERSION}" );
+    gx.cmd (  "git push --tags" );
+  }
+}
+
+mod ver_adm : sys_ver_adm {
 }
