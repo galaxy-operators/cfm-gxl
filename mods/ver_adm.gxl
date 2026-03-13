@@ -3,15 +3,11 @@ mod sys_ver_adm {
   flow __into_sys_ver_adm | ver.use {
   }
   #[usage(desp="update version of patch ")]
-  flow up_patch   | ver.patch  { }
-  #[usage(desp="update version of patch  and commit ")]
-  flow up_patch_ci | ver.patch   | git.ci_ver { }
+  flow v_patch_up   | ver.patch  { }
   #[usage(desp="update version of feature ")]
-  flow up_feature |  ver.feature   { }
-  #[usage(desp="update version of feature and commit ")]
-  flow up_feature_ci |  ver.feature  | git.ci_ver  { }
+  flow v_feat_up |  ver.feature   { }
   #[usage(desp="add tag by version ")]
-  flow tag_stable{
+  flow tag_stable {
     gx.ver ( file : "${GXL_START_ROOT}/version.txt" ,  inc : "null"  );
     gx.cmd (  "git tag v${VERSION}" );
     gx.cmd (  "git push --tags" );
@@ -33,13 +29,9 @@ mod lib_ver_adm {
   flow __into_lib_ver_adm | ver.use {
   }
   #[usage(desp="update version of patch ")]
-  flow up_patch   | ver.patch  { }
-  #[usage(desp="update version of patch  and commit ")]
-  flow up_patch_ci | ver.patch   | git.ci_ver { }
+  flow v_patch_up   | ver.patch  { }
   #[usage(desp="update version of feature ")]
-  flow up_feature |  ver.feature   { }
-  #[usage(desp="update version of feature and commit ")]
-  flow up_feature_ci |  ver.feature  | git.ci_ver  { }
+  flow v_feat_up |  ver.feature   { }
   #[usage(desp="add tag by version ")]
   flow tag_stable{
     gx.ver ( file : "${GXL_START_ROOT}/version.txt" ,  inc : "null"  );
