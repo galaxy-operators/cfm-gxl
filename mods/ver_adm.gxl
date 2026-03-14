@@ -3,9 +3,9 @@ mod sys_ver_adm {
   flow __into_sys_ver_adm | ver.use {
   }
   #[usage(desp="update version of patch ")]
-  flow up_vpatch   | ver.patch  { }
+  flow v_patch   | ver.patch  { }
   #[usage(desp="update version of feature ")]
-  flow up_vfeat |  ver.feature   { }
+  flow v_feat |  ver.feature   { }
   #[usage(desp="add tag by version ")]
   flow tag_stable {
     gx.ver ( file : "${GXL_START_ROOT}/version.txt" ,  inc : "null"  );
@@ -29,9 +29,9 @@ mod lib_ver_adm {
   flow __into_lib_ver_adm | ver.use {
   }
   #[usage(desp="update version of patch ")]
-  flow up_vpatch   | ver.patch  { }
+  flow v_patch   | ver.patch  { }
   #[usage(desp="update version of feature ")]
-  flow up_vfeat |  ver.feature   { }
+  flow v_feat |  ver.feature   { }
   #[usage(desp="add tag by version ")]
   flow v_tag {
     gx.ver ( file : "${GXL_START_ROOT}/version.txt" ,  inc : "null"  );
