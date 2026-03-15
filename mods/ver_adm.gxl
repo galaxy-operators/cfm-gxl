@@ -35,6 +35,7 @@ mod lib_ver_adm {
   #[usage(desp="add tag by version ")]
   flow v_tag {
     gx.ver ( file : "${GXL_START_ROOT}/version.txt" ,  inc : "null"  );
+    gx.cmd (  "git commit -a -m v${VERSION}" );
     gx.cmd (  "git tag v${VERSION}" );
     gx.cmd (  "git push --tags" );
   }
